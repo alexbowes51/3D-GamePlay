@@ -140,7 +140,7 @@ void Game::draw()
 
 	cout << "Drawing Cube " << endl;
 	glLoadIdentity();
-	glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Z Axis
+	glRotatef(rotationAngle, 0, 1, 0); // Rotates the camera on Z Axis
 
 	glCallList(1);
 

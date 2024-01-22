@@ -51,12 +51,41 @@ void Game::initialize()
 	glBegin(GL_TRIANGLES);
 	{
 
+		
+		//white triangle
+		glColor3f(1.0f, 1.0f, 1.0f);
+
+
+		glVertex3f(0.0, 1.0, -5.0);
+		glVertex3f(-1.0, -1.0, -5.0);
+		glVertex3f(1.0, -1.0, -5.0);
+		
+		//blue window
 		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(0.0, 2.0, -5.0);
 
-		glVertex3f(-2.0, -2.0, -5.0);
+		glVertex3f(0.0, 1.0, -6.0);
+		glVertex3f(-0.15, -0.01, -6.0);
+		glVertex3f(0.15, -0.01, -6.0);
 
-		glVertex3f(2.0, -2.0, -5.0);
+		//right missile
+		glColor3f(1.0f, 1.0f, 0.0f);
+
+		glVertex3f(0.5, 0.5, -5.0);
+		glVertex3f(0.75, -0.75, -5.0);
+		glVertex3f(0.5, -0.5, -5.0);
+
+		//left missile
+		glColor3f(1.0f, 1.0f, 0.0f);
+
+		glVertex3f(0.5, 0.5, -5.0);
+		glVertex3f(0.75, -0.75, -5.0);
+		glVertex3f(0.5, -0.5, -5.0);
+
+
+       
+
+		
+
 	}
 
 	glEnd();
