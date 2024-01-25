@@ -70,17 +70,32 @@ void Game::initialize()
 		//right missile
 		glColor3f(1.0f, 1.0f, 0.0f);
 
-		glVertex3f(0.5, 0.5, -5.0);
-		glVertex3f(0.75, -0.75, -5.0);
-		glVertex3f(0.5, -0.5, -5.0);
+		glVertex3f(0.7, 0.7, -5.0);
+		glVertex3f(1.0, -0.95, -5.0);
+		glVertex3f(1.5, -0.9, -5.0);
 
 		//left missile
 		glColor3f(1.0f, 1.0f, 0.0f);
 
-		glVertex3f(0.5, 0.5, -5.0);
-		glVertex3f(0.75, -0.75, -5.0);
-		glVertex3f(0.5, -0.5, -5.0);
+		glVertex3f(-0.7, 0.7, -5.0);
+		glVertex3f(-1.0, -0.95, -5.0);
+		glVertex3f(-1.5, -0.9, -5.0);
 
+		//left wing
+		glColor3f(0.0f, 0.0f, 1.0f);
+
+		glVertex3f(-0.5, 0.0, -5.0);
+		glVertex3f(-1.0, -1.0, -5.0);
+		glVertex3f(-2.5, -1.5, -5.0);
+
+		//right wing 
+
+		glColor3f(0.0f, 0.0f, 1.0f);
+
+		glVertex3f(0.5, 0.0, -5.0);
+		glVertex3f(1.0, -1.0, -5.0);
+		glVertex3f(2.5, -1.5, -5.0);
+		
 
        
 
