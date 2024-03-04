@@ -1,4 +1,7 @@
 #include <./include/Game.h>
+#include <./include/Matrix3f.h>
+#include <./include/Vector3.h>
+
 
 Game::Game() : window(VideoMode(800, 600), "OpenGL Cube VBO")
 {
@@ -436,6 +439,15 @@ void Game::update()
 	elapsed = clock.getElapsedTime();
 
 	cout << "Update up" << endl;
+
+	for (int i = 0; i <= 36; i++) {
+		gpp::Vector3f VertexVertex(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+		VertexVertex = gpp::Matrix3f::rotateX(-5.0f) * VertexVertex;
+		vertex[i].coordinate[0] = VertexVertex.getX();
+		vertex[i].coordinate[1] = VertexVertex.getY();
+		vertex[i].coordinate[2] = VertexVertex.getZ();
+	}
 }
 
 void Game::render()
