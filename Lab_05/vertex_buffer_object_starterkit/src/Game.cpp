@@ -1,6 +1,5 @@
 #include <./include/Game.h>
 #include <./include/Matrix3f.h>
-#include <./include/Vector3.h>
 
 
 Game::Game() : window(VideoMode(800, 600), "OpenGL Cube VBO")
@@ -39,7 +38,7 @@ typedef struct
 	float color[3];
 } Vertex;
 
-Vertex vertex[24];
+Vertex vertex[36];
 GLubyte triangles[36];
 
 /* Variable to hold the VBO identifier */
@@ -115,8 +114,8 @@ void Game::initialize()
 
 	vertex[13].coordinate[0] = -0.5f;
 	vertex[13].coordinate[1] = -0.5f;
-	vertex[13].coordinate[2] = 0.5f
-		;
+	vertex[13].coordinate[2] = 0.5f;
+
 	vertex[14].coordinate[0] = 0.5f;
 	vertex[14].coordinate[1] = -0.5f;
 	vertex[14].coordinate[2] = 0.5f;
@@ -227,7 +226,7 @@ void Game::initialize()
 	vertex[1].color[0] = 0.2f;
 	vertex[1].color[1] = 1.0f;
 	vertex[1].color[2] = 0.0f;
-
+ 
 	vertex[2].color[0] = 0.3f;
 	vertex[2].color[1] = 1.0f;
 	vertex[2].color[2] = 0.0f;
@@ -323,16 +322,16 @@ void Game::initialize()
 
 	//left face triangle 2 
 	vertex[21].color[0] = 0.4f;
-	vertex[21].color[1] = 0.0f;
-	vertex[21].color[2] = 1.0f;
+	vertex[21].color[1] = 1.0f;
+	vertex[21].color[2] = 0.0f;
 
 	vertex[22].color[0] = 0.5f;
-	vertex[22].color[1] = 0.0f;
-	vertex[22].color[2] = 1.0f;
+	vertex[22].color[1] = 1.0f;
+	vertex[22].color[2] = 0.0f;
 
 	vertex[23].color[0] = 0.6f;
-	vertex[23].color[1] = 0.0f;
-	vertex[23].color[2] = 1.0f;
+	vertex[23].color[1] = 1.0f;
+	vertex[23].color[2] = 0.0f;
 	/// <summary>
 	/// ////////////////////////////////////////////////
 	/// </summary>
@@ -351,44 +350,44 @@ void Game::initialize()
 	vertex[26].color[2] = 1.0f;
 
 	//top face trinagle 2
-	vertex[27].color[0] = 0.1f;
+	vertex[27].color[0] = 0.4f;
 	vertex[27].color[1] = 0.0f;
 	vertex[27].color[2] = 1.0f;
 
-	vertex[28].color[0] = 0.2f;
+	vertex[28].color[0] = 0.5f;
 	vertex[28].color[1] = 0.0f;
 	vertex[28].color[2] = 1.0f;
 
-	vertex[29].color[0] = 0.3f;
+	vertex[29].color[0] = 0.6f;
 	vertex[29].color[1] = 0.0f;
 	vertex[29].color[2] = 1.0f;
 
 	//back face triangle 1
 	vertex[30].color[0] = 0.1f;
 	vertex[30].color[1] = 1.0f;
-	vertex[30].color[2] = 0.0f;
+	vertex[30].color[2] = 1.0f;
 
 	vertex[31].color[0] = 0.2f;
 	vertex[31].color[1] = 1.0f;
-	vertex[31].color[2] = 0.0f;
+	vertex[31].color[2] = 1.0f;
 
 	vertex[32].color[0] = 0.3f;
 	vertex[32].color[1] = 1.0f;
-	vertex[32].color[2] = 0.0f;
+	vertex[32].color[2] = 1.0f;
 
 	//back face triangle 2
 
 	vertex[33].color[0] = 0.4f;
 	vertex[33].color[1] = 1.0f;
-	vertex[33].color[2] = 0.0f;
+	vertex[33].color[2] = 1.0f;
 
-	vertex[34].color[0] = 0.4f;
+	vertex[34].color[0] = 0.5f;
 	vertex[34].color[1] = 1.0f;
-	vertex[34].color[2] = 0.0f;
+	vertex[34].color[2] = 1.0f;
 
 	vertex[35].color[0] = 0.6f;
 	vertex[35].color[1] = 1.0f;
-	vertex[35].color[2] = 0.0f;
+	vertex[35].color[2] = 1.0f;
 
 
 
@@ -425,12 +424,12 @@ void Game::initialize()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 
 	/* Upload vertex data to GPU */
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 35, vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 36, vertex, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glGenBuffers(1, &index);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 35, triangles, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 36, triangles, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
@@ -440,13 +439,22 @@ void Game::update()
 
 	cout << "Update up" << endl;
 
-	for (int i = 0; i <= 36; i++) {
+	for (int i = 0; i <= 35; i++) {
 		gpp::Vector3f VertexVertex(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
 
-		VertexVertex = gpp::Matrix3f::rotateX(-5.0f) * VertexVertex;
-		vertex[i].coordinate[0] = VertexVertex.getX();
-		vertex[i].coordinate[1] = VertexVertex.getY();
-		vertex[i].coordinate[2] = VertexVertex.getZ();
+		VertexVertex = gpp::Matrix3f::rotateX(-0.004f) * VertexVertex;
+	 	vertex[i].coordinate[0] = VertexVertex.getX();
+	 	vertex[i].coordinate[1] = VertexVertex.getY();
+	 	vertex[i].coordinate[2] = VertexVertex.getZ();
+	}
+
+		for (int i = 0; i <= 35; i++) {
+		gpp::Vector3f VertexVertex(vertex[i].coordinate[0], vertex[i].coordinate[1], vertex[i].coordinate[2]);
+
+		VertexVertex = gpp::Matrix3f::rotateZ(-0.004f) * VertexVertex;
+	 	vertex[i].coordinate[0] = VertexVertex.getX();
+	 	vertex[i].coordinate[1] = VertexVertex.getY();
+	 	vertex[i].coordinate[2] = VertexVertex.getZ();
 	}
 }
 
@@ -456,25 +464,25 @@ void Game::render()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
 
 	/*	As the data positions will be updated by the this program on the
 		CPU bind the updated data to the GPU for drawing	*/
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 6, vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 36, vertex, GL_STATIC_DRAW);
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 
 
-	glColorPointer(3, GL_FLOAT, sizeof(Vertex), (char*)NULL + 12);
+	glColorPointer(3, GL_FLOAT, sizeof(Vertex), (char*)NULL + 36);
 
 	/*	Draw Triangle from VBO	(set where to start from as VBO can contain 
 		model compoents that are and are not to be drawn )	*/
 	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), (char*)NULL + 0);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, (char*)NULL + 0);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, (char*)NULL + 0);
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
