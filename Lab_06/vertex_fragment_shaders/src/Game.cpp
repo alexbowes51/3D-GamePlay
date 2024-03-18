@@ -490,7 +490,7 @@ void Game::initialize()
 						 "in vec4 color;"
 						 "out vec4 fColor;"
 						 "void main() {"
-						 "	fColor = color + vec4(0.8f, 0.2f, 1.0f, 1.0f);"
+						 "	fColor = color + vec4(1.0f, 0.2f, 1.8f, 1.0f);"
 						 "}"; // Fragment Shader Src
 
 	DEBUG_MSG("Setting Up Fragment Shader");

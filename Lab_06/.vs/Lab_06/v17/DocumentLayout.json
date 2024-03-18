@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\3D-Prog\\3D-GamePlay\\3D-GamePlay\\Lab_06\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D-GamePlay\\Lab_06\\vertex_fragment_shaders\\src\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vertex_fragment_shaders\\src\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D-GamePlay\\Lab_06\\vertex_fragment_shaders\\src\\Game.cpp",
+              "RelativeDocumentMoniker": "vertex_fragment_shaders\\src\\Game.cpp",
+              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D-GamePlay\\Lab_06\\vertex_fragment_shaders\\src\\Game.cpp",
+              "RelativeToolTip": "vertex_fragment_shaders\\src\\Game.cpp",
+              "ViewState": "AQIAAOABAAAAAAAAAAAAAOwBAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-11T16:46:30.664Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
