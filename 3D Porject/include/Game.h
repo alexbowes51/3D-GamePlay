@@ -66,7 +66,8 @@ private:
     Clock clock;                 // SFML Clock for timing
     Time time;                   // SFML Time for time-related operations
     bool isRunning = false;      // Flag to track game state
-
+    bool GameStart = false;
+    int WallCount = 0;
     /**
      * @brief Method to initialize the game.
      *
@@ -75,6 +76,7 @@ private:
     void initialise(); // Method to initialize the game
     void renderObject(GameObject* object);
     void moveWalls();
+    void setupWalls();
 
     /**
      * @brief Method to update the game state.

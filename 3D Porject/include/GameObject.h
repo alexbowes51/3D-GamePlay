@@ -29,7 +29,8 @@ namespace gpp
 	{
 		PLAYER,
 		NPC,
-		BOSS
+		BOSS,
+		Wall
 	};
 
 	/**

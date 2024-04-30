@@ -125,20 +125,9 @@ void Game::initialise()
 
 	DEBUG_MSG("\n******** Init GameObjects STARTS ********\n");
 
-	game_object[0] = new GameObject(TYPE::NPC);
-	game_object[0]->setPosition(vec3(-6.0f, 0.0f, -20.0f));
-	
-
-	game_object[1] = new GameObject(TYPE::NPC);
-	game_object[1]->setPosition(vec3(0.000f, 0.0f, -20.0f));
-
-	game_object[2] = new GameObject(TYPE::NPC);
-	game_object[2]->setPosition(vec3(6.000f, 0.0f, -20.0f));
-
+	setupWalls();
 	game_object[3] = new GameObject(TYPE::PLAYER);
 	game_object[3]->setPosition(vec3(0.0001f, 0.0f, 0.0f));
-
-
 	for (auto& object : game_object) {
 		object->setModelMatrix(translate(glm::mat4(1), object->getPosition()));
 	}
@@ -455,15 +444,26 @@ void Game::moveWalls()
 		game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, 0.05f)));
 
 		if (game_object[i]->getPosition().z >= 10) {
-		
-			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -20.0f)));
-			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, -20.0f));
+			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -35.0f)));
+			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, -35.0f));
 			std::cout << "Wall " << i << " position reset" << std::endl;
 		}
 		else {
 			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, game_object[i]->getModelMatrix()[3][2]));
 		}
 	}
+}
+
+void Game::setupWalls()
+{
+	game_object[0] = new GameObject(TYPE::Wall);
+	game_object[0]->setPosition(vec3(-6.0f, 0.0f, -35.0f));
+
+	game_object[1] = new GameObject(TYPE::Wall);
+	game_object[1]->setPosition(vec3(-4.000f, 0.0f, -35.0f));
+
+	game_object[2] = new GameObject(TYPE::Wall);
+	game_object[2]->setPosition(vec3(-2.000f, 0.0f, -35.0f));
 }
 
 /**
@@ -488,7 +488,9 @@ void Game::update()
 
 	}
 
+	if (GameStart) {
 		moveWalls();
+	}
 	
 	
 
@@ -528,43 +530,29 @@ void Game::run()
 		// Handle events such as window close or keyboard input
 		while (window.pollEvent(event))
 		{
-			// Check if the window is being closed
-			if (event.type == Event::Closed)
-			{
-				// Set the flag to stop the game loop
+			if (event.type == Event::Closed){
 				isRunning = false;
 			}
-
-			// NPC Translation
-			// Check for keyboard input for model translation
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-			{
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
 				// Translate the model upwards about the y-axis
 				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -1.0f)));// Translate UP
 			}
-
-			// Check for keyboard input for model translation
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-			{
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 				// Translate the model downwards along the y-axis
 				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(0.0f, 0.0f, +1.0f)));// Translate Down
 			}
-
-			// Check for keyboard input for model translation
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-			{
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
 				// Translate the model leftwards along the x-axis
 				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(-1.0f, 0.0f, 0.0f)));// Translate Left
 			}
-
-			// Check for keyboard input for model translation
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-			{
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 				// Translate the model rightwards along the x-axis
 				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(1.0f, 0.0f, 0.0f)));// Translate Right
 			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+				GameStart = true;
+			}
 
-			
 		}
 
 		// Update game state
@@ -604,13 +592,43 @@ void Game::render()
 	int y = Mouse::getPosition(window).y;
 
 	string hud = "Heads Up Display [" + string(toString(x)) + "][" + string(toString(y)) + "]";
+	string GameName = "CUBIC SLIDE";
+	string Rule = "DOGE CUBES MOVING CUBES,HIT BIG BOSS";
+	string Start = "PRESS SPACE TO GO";
+	string Score = "WALLS PASSED : " + string(toString(WallCount));
+
 
 	Text text(hud, font);
+	Text text2(GameName, font);
+	Text text3(Rule, font);
+	Text text4(Start, font);
+	Text text5(Score, font);
 
 	text.setFillColor(sf::Color(255, 255, 255, 170));
-	text.setPosition(50.f, 20.f);
+	text.setPosition(0.f, 20.f);
 
-	window.draw(text);
+	text2.setFillColor(sf::Color(255, 255, 255, 170));
+	text2.setPosition(25.f, 120.f);
+
+	text3.setFillColor(sf::Color(255, 255, 255, 170));
+	text3.setPosition(50.f, 400.0f);
+
+	text4.setFillColor(sf::Color(255, 255, 255, 170));
+	text4.setPosition(150.f, 425.f);
+
+	text5.setFillColor(sf::Color(255, 255, 255, 170));
+	text5.setPosition(150.f, 425.f);
+
+	if (!GameStart) {
+		window.draw(text);
+		window.draw(text2);
+		window.draw(text3);
+		window.draw(text4);
+	}
+	else {
+		window.draw(text5);
+	}
+	
 
 	// Restore OpenGL render states
 	// https://www.sfml-dev.org/documentation/2.0/classsf_1_1RenderTarget.php#a8d1998464ccc54e789aaf990242b47f7
