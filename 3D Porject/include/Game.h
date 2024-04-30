@@ -1,7 +1,7 @@
 #ifndef GAME_H // If the macro GAME_H is not defined
 #define GAME_H // Define the macro GAME_H to prevent multiple inclusions of this header file
 
-const int GAME_OBJECTS	= 2;	// Total Number of GamesObjects
+const int GAME_OBJECTS	= 4;	// Total Number of GamesObjects
 
 // Include necessary standard library headers
 #include <string>   // For string manipulation
@@ -14,12 +14,14 @@ const int GAME_OBJECTS	= 2;	// Total Number of GamesObjects
 #include <SFML/OpenGL.hpp>   // OpenGL extension for SFML
 
 // Include GLM headers for mathematics library
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>                  // OpenGL Mathematics
 #include <glm/gtc/matrix_transform.hpp> // Matrix transformations
 #include <glm/gtx/string_cast.hpp>      // String Operations
 
 // Include custom headers
 #include <./include/Debug.h>      // Debugging utilities
+#include <./include/Player.h>     // Player object class
 #include <./include/GameObject.h> // Game object class
 
 // Using directives to avoid typing std::, sf::, and glm:: prefixes
@@ -58,7 +60,8 @@ public:
     void run(); // Method to run the game
 
 private:
-    GameObject *game_object[3];  // Array of game objects
+    GameObject *game_object[4];  // Array of game objects
+    Player *player_object;
     RenderWindow window;         // SFML RenderWindow for rendering graphics
     Clock clock;                 // SFML Clock for timing
     Time time;                   // SFML Time for time-related operations
@@ -70,6 +73,8 @@ private:
      * This method initializes the game state, including setting up the SFML window and loading resources.
      */
     void initialise(); // Method to initialize the game
+    void renderObject(GameObject* object);
+    void moveWalls();
 
     /**
      * @brief Method to update the game state.
