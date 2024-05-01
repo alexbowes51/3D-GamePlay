@@ -11,20 +11,20 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -70,13 +70,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Game.h",
               "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Game.h",
               "RelativeDocumentMoniker": "include\\Game.h",
               "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Game.h",
               "RelativeToolTip": "include\\Game.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAATAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAE8AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-04-30T11:43:08.059Z",
               "IsPinned": true,
@@ -90,7 +90,7 @@
               "RelativeDocumentMoniker": "src\\Player.cpp",
               "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\Player.cpp",
               "RelativeToolTip": "src\\Player.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAA0AAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-30T12:04:12.171Z",
               "IsPinned": true,
@@ -104,9 +104,48 @@
               "RelativeDocumentMoniker": "src\\Game.cpp",
               "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\Game.cpp",
               "RelativeToolTip": "src\\Game.cpp",
-              "ViewState": "AQIAALgBAAAAAAAAAAAYwMoBAAAtAAAA",
+              "ViewState": "AQIAAMgBAAAAAAAAAAAkwNgBAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-30T11:42:07.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Cube.h",
+              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h",
+              "RelativeDocumentMoniker": "include\\Cube.h",
+              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h",
+              "RelativeToolTip": "include\\Cube.h",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAkwKAAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-30T12:40:24.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameObject.cpp",
+              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp",
+              "RelativeDocumentMoniker": "src\\GameObject.cpp",
+              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp",
+              "RelativeToolTip": "src\\GameObject.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGAAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-30T11:43:00.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameObject.h",
+              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\GameObject.h",
+              "RelativeDocumentMoniker": "include\\GameObject.h",
+              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\GameObject.h",
+              "RelativeToolTip": "include\\GameObject.h",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAkwLUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-30T12:04:45.554Z",
               "EditorCaption": ""
             },
             {
@@ -120,32 +159,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-04-30T12:40:31.129Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Cube.h",
-              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h",
-              "RelativeDocumentMoniker": "include\\Cube.h",
-              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\Cube.h",
-              "RelativeToolTip": "include\\Cube.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIIAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-30T12:40:24.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GameObject.cpp",
-              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp",
-              "RelativeDocumentMoniker": "src\\GameObject.cpp",
-              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\src\\GameObject.cpp",
-              "RelativeToolTip": "src\\GameObject.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-30T11:43:00.929Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -218,19 +231,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-04-30T12:04:26.911Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\GameObject.h",
-              "RelativeDocumentMoniker": "include\\GameObject.h",
-              "ToolTip": "C:\\3D-Prog\\3D-GamePlay\\3D Porject\\include\\GameObject.h",
-              "RelativeToolTip": "include\\GameObject.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB0AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-30T12:04:45.554Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",

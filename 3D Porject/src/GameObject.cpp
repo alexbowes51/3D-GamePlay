@@ -102,3 +102,9 @@ string GameObject::enumToString()
         return "Unknown GameObject";
     }
 }
+
+TYPE GameObject::getType() const
+{
+    return type;
+}
+

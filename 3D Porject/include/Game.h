@@ -73,10 +73,15 @@ private:
      *
      * This method initializes the game state, including setting up the SFML window and loading resources.
      */
+
+
     void initialise(); // Method to initialize the game
     void renderObject(GameObject* object);
     void moveWalls();
     void setupWalls();
+
+    void collisions();
+    
 
     /**
      * @brief Method to update the game state.

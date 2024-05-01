@@ -30,7 +30,7 @@ namespace gpp
 		PLAYER,
 		NPC,
 		BOSS,
-		Wall
+		WALL
 	};
 
 	/**
@@ -173,6 +173,8 @@ namespace gpp
 		 * @return enum type as a string.
 		 */
 		string enumToString();
+
+		TYPE getType() const;
 	};
 }
 

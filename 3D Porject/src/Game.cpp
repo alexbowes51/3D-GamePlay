@@ -126,8 +126,8 @@ void Game::initialise()
 	DEBUG_MSG("\n******** Init GameObjects STARTS ********\n");
 
 	setupWalls();
-	game_object[3] = new GameObject(TYPE::PLAYER);
-	game_object[3]->setPosition(vec3(0.0001f, 0.0f, 0.0f));
+	game_object[0] = new GameObject(TYPE::PLAYER);
+	game_object[0]->setPosition(vec3(0.0001f, 0.0f, 0.0f));
 	for (auto& object : game_object) {
 		object->setModelMatrix(translate(glm::mat4(1), object->getPosition()));
 	}
@@ -373,7 +373,7 @@ void Game::initialise()
 	projection = perspective(
 		45.0f,		 // Field of View 45 degrees
 		4.0f / 3.0f, // Aspect ratio: 4:3
-		5.0f,		 // Display Range Min : 0.1f unit
+		0.1f,		 // Display Range Min : 0.1f unit
 		100.0f		 // Display Range Max : 100.0f unit
 	);
 
@@ -410,7 +410,18 @@ void Game::initialise()
 void Game::renderObject(GameObject* object)
 {
 	glBufferSubData(GL_ARRAY_BUFFER, 0 * VERTICES * sizeof(GLfloat), 3 * VERTICES * sizeof(GLfloat), object->getVertex());
-	glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), colours);
+
+	switch (object->getType()) {
+	case TYPE::WALL:
+		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), colours);
+		break;
+	case TYPE::PLAYER:
+		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), Blue);
+		break;
+	default:
+		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), colours);
+		break;
+	}
 	glBufferSubData(GL_ARRAY_BUFFER, ((3 * VERTICES) + (4 * COLOURS)) * sizeof(GLfloat), 2 * UVS * sizeof(GLfloat), uvs);
 
 	// Send transformation to shader mvp uniform [0][0] is start of array
@@ -438,17 +449,28 @@ void Game::renderObject(GameObject* object)
 
 void Game::moveWalls()
 {
-	for (int i = 0; i < 3; i++) {
+	for (int i = 1; i < 4; i++) {
 		std::cout << "Wall " << i << " position: " << game_object[i]->getPosition().z << std::endl;
-
 		game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, 0.05f)));
 
+		// If wall position exceeds a certain threshold, reset it and move each block by 2 units on the x-axis
 		if (game_object[i]->getPosition().z >= 10) {
 			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -35.0f)));
 			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, -35.0f));
 			std::cout << "Wall " << i << " position reset" << std::endl;
+
+			// Move each block by 2 units on the x-axis
+			glm::vec3 currentPosition = game_object[i]->getPosition();
+			currentPosition.x += 2.0f;
+
+			if (game_object[i]->getPosition().x >= 6.0f) {
+				game_object[i]->setPosition(glm::vec3(-6.0f, 0.0f, game_object[i]->getPosition().z));
+			}
+
+			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(currentPosition.x, 0.0f, 0.0f)));
 		}
 		else {
+			// Update the position based on the current model matrix
 			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, game_object[i]->getModelMatrix()[3][2]));
 		}
 	}
@@ -456,14 +478,18 @@ void Game::moveWalls()
 
 void Game::setupWalls()
 {
-	game_object[0] = new GameObject(TYPE::Wall);
-	game_object[0]->setPosition(vec3(-6.0f, 0.0f, -35.0f));
+	game_object[1] = new GameObject(TYPE::WALL);
+	game_object[1]->setPosition(vec3(-6.0f, 0.0f, -35.0f));
 
-	game_object[1] = new GameObject(TYPE::Wall);
-	game_object[1]->setPosition(vec3(-4.000f, 0.0f, -35.0f));
+	game_object[2] = new GameObject(TYPE::WALL);
+	game_object[2]->setPosition(vec3(-4.000f, 0.0f, -35.0f));
 
-	game_object[2] = new GameObject(TYPE::Wall);
-	game_object[2]->setPosition(vec3(-2.000f, 0.0f, -35.0f));
+	game_object[3] = new GameObject(TYPE::WALL);
+	game_object[3]->setPosition(vec3(-2.000f, 0.0f, -35.0f));
+}
+
+void Game::collisions() {
+	
 }
 
 /**
@@ -533,21 +559,22 @@ void Game::run()
 			if (event.type == Event::Closed){
 				isRunning = false;
 			}
+			//PLayer controlls 
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
 				// Translate the model upwards about the y-axis
-				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -1.0f)));// Translate UP
+				game_object[0]->setModelMatrix(translate(game_object[0]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -1.0f)));// Translate UP
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 				// Translate the model downwards along the y-axis
-				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(0.0f, 0.0f, +1.0f)));// Translate Down
+				game_object[0]->setModelMatrix(translate(game_object[0]->getModelMatrix(), glm::vec3(0.0f, 0.0f, +1.0f)));// Translate Down
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
 				// Translate the model leftwards along the x-axis
-				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(-1.0f, 0.0f, 0.0f)));// Translate Left
+				game_object[0]->setModelMatrix(translate(game_object[0]->getModelMatrix(), glm::vec3(-1.0f, 0.0f, 0.0f)));// Translate Left
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 				// Translate the model rightwards along the x-axis
-				game_object[3]->setModelMatrix(translate(game_object[3]->getModelMatrix(), glm::vec3(1.0f, 0.0f, 0.0f)));// Translate Right
+				game_object[0]->setModelMatrix(translate(game_object[0]->getModelMatrix(), glm::vec3(1.0f, 0.0f, 0.0f)));// Translate Right
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				GameStart = true;
@@ -595,7 +622,7 @@ void Game::render()
 	string GameName = "CUBIC SLIDE";
 	string Rule = "DOGE CUBES MOVING CUBES,HIT BIG BOSS";
 	string Start = "PRESS SPACE TO GO";
-	string Score = "WALLS PASSED : " + string(toString(WallCount));
+	string Score = "WALLS PASSED : " + string(toString(WallCount / 3));
 
 
 	Text text(hud, font);
