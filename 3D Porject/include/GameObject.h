@@ -10,6 +10,7 @@
 #include <stdio.h>	// For standard input and output operations
 #include <string.h> // For string manipulation (memcpy)
 #include <string> 	// For string manipulation
+#include <iostream>
 
 // Include GLM headers for mathematics library
 #include <glm/glm.hpp>					// OpenGL Mathematics
@@ -31,6 +32,11 @@ namespace gpp
 		NPC,
 		BOSS,
 		WALL
+	};
+
+	struct AABB {
+		vec3 min;
+		vec3 max;
 	};
 
 	/**
@@ -173,6 +179,10 @@ namespace gpp
 		 * @return enum type as a string.
 		 */
 		string enumToString();
+
+		bool checkCollision(const GameObject& other) const;
+
+
 
 		TYPE getType() const;
 	};

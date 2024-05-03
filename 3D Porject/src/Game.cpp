@@ -127,7 +127,7 @@ void Game::initialise()
 
 	setupWalls();
 	game_object[0] = new GameObject(TYPE::PLAYER);
-	game_object[0]->setPosition(vec3(0.0001f, 0.0f, 0.0f));
+	game_object[0]->setPosition(vec3(0.0f, 0.0f, 0.0f));
 	for (auto& object : game_object) {
 		object->setModelMatrix(translate(glm::mat4(1), object->getPosition()));
 	}
@@ -413,7 +413,7 @@ void Game::renderObject(GameObject* object)
 
 	switch (object->getType()) {
 	case TYPE::WALL:
-		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), colours);
+		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), Gray);
 		break;
 	case TYPE::PLAYER:
 		glBufferSubData(GL_ARRAY_BUFFER, 3 * VERTICES * sizeof(GLfloat), 4 * COLOURS * sizeof(GLfloat), Blue);
@@ -449,19 +449,23 @@ void Game::renderObject(GameObject* object)
 
 void Game::moveWalls()
 {
-	for (int i = 1; i < 4; i++) {
+	for (int i = 1; i < 12; i++) {
 		std::cout << "Wall " << i << " position: " << game_object[i]->getPosition().z << std::endl;
 		game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, 0.05f)));
 
 		// If wall position exceeds a certain threshold, reset it and move each block by 2 units on the x-axis
 		if (game_object[i]->getPosition().z >= 10) {
-			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -35.0f)));
-			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, -35.0f));
+			game_object[i]->setModelMatrix(translate(game_object[i]->getModelMatrix(), glm::vec3(0.0f, 0.0f, -75.0f)));
+			game_object[i]->setPosition(glm::vec3(0.0f, 0.0f, -75.0f));
+			WallCount += 1;
+			if (WallCount == 24) {
+				win = true;
+			}
 			std::cout << "Wall " << i << " position reset" << std::endl;
 
 			// Move each block by 2 units on the x-axis
 			glm::vec3 currentPosition = game_object[i]->getPosition();
-			currentPosition.x += 2.0f;
+			//currentPosition.x += 2.0f;
 
 			if (game_object[i]->getPosition().x >= 6.0f) {
 				game_object[i]->setPosition(glm::vec3(-6.0f, 0.0f, game_object[i]->getPosition().z));
@@ -478,6 +482,7 @@ void Game::moveWalls()
 
 void Game::setupWalls()
 {
+	//left wall 
 	game_object[1] = new GameObject(TYPE::WALL);
 	game_object[1]->setPosition(vec3(-6.0f, 0.0f, -35.0f));
 
@@ -486,11 +491,35 @@ void Game::setupWalls()
 
 	game_object[3] = new GameObject(TYPE::WALL);
 	game_object[3]->setPosition(vec3(-2.000f, 0.0f, -35.0f));
+
+	//right wall
+	game_object[4] = new GameObject(TYPE::WALL);
+	game_object[4]->setPosition(vec3(6.0f, 0.0f, -55.0f));
+
+	game_object[5] = new GameObject(TYPE::WALL);
+	game_object[5]->setPosition(vec3(4.000f, 0.0f, -55.0f));
+
+	game_object[6] = new GameObject(TYPE::WALL);
+	game_object[6]->setPosition(vec3(2.000f, 0.0f, -55.0f));
+
+	//middle wall
+	game_object[7] = new GameObject(TYPE::WALL);
+	game_object[7]->setPosition(vec3(2.000f, 0.0f, -75.0f));
+
+	game_object[8] = new GameObject(TYPE::WALL);
+	game_object[8]->setPosition(vec3(0.000f, 0.0f, -75.0f));
+
+	game_object[9] = new GameObject(TYPE::WALL);
+	game_object[9]->setPosition(vec3(-2.000f, 0.0f, -75.0f));
+
+	game_object[10] = new GameObject(TYPE::WALL);
+	game_object[10]->setPosition(vec3(-4.000f, 0.0f, -75.0f));
+
+	game_object[11] = new GameObject(TYPE::WALL);
+	game_object[11]->setPosition(vec3(4.000f, 0.0f, -75.0f));
+
 }
 
-void Game::collisions() {
-	
-}
 
 /**
  * @brief Updates the game state.
@@ -514,8 +543,15 @@ void Game::update()
 
 	}
 
-	if (GameStart) {
+	if (GameStart && !win) {
 		moveWalls();
+	}
+
+
+	for (int i = 1; i < 12; i++) {
+		if (game_object[0]->checkCollision(*game_object[i])) {
+			std::cout << "Colliding" << std::endl;
+		}
 	}
 	
 	
@@ -623,6 +659,7 @@ void Game::render()
 	string Rule = "DOGE CUBES MOVING CUBES,HIT BIG BOSS";
 	string Start = "PRESS SPACE TO GO";
 	string Score = "WALLS PASSED : " + string(toString(WallCount / 3));
+	string Win = "YOU WIN ";
 
 
 	Text text(hud, font);
@@ -630,6 +667,7 @@ void Game::render()
 	Text text3(Rule, font);
 	Text text4(Start, font);
 	Text text5(Score, font);
+	Text text6(Win, font);
 
 	text.setFillColor(sf::Color(255, 255, 255, 170));
 	text.setPosition(0.f, 20.f);
@@ -646,14 +684,20 @@ void Game::render()
 	text5.setFillColor(sf::Color(255, 255, 255, 170));
 	text5.setPosition(150.f, 425.f);
 
+	text6.setFillColor(sf::Color(255, 255, 255, 170));
+	text6.setPosition(150.f, 325.f);
+
 	if (!GameStart) {
 		window.draw(text);
 		window.draw(text2);
 		window.draw(text3);
 		window.draw(text4);
 	}
-	else {
-		window.draw(text5);
+
+	   window.draw(text5);
+
+	if (win) {
+		window.draw(text6);
 	}
 	
 

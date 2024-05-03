@@ -60,13 +60,14 @@ public:
     void run(); // Method to run the game
 
 private:
-    GameObject *game_object[4];  // Array of game objects
+    GameObject *game_object[12];  // Array of game objects
     Player *player_object;
     RenderWindow window;         // SFML RenderWindow for rendering graphics
     Clock clock;                 // SFML Clock for timing
     Time time;                   // SFML Time for time-related operations
     bool isRunning = false;      // Flag to track game state
     bool GameStart = false;
+    bool win = false;
     int WallCount = 0;
     /**
      * @brief Method to initialize the game.
@@ -80,7 +81,6 @@ private:
     void moveWalls();
     void setupWalls();
 
-    void collisions();
     
 
     /**

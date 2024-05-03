@@ -103,6 +103,25 @@ string GameObject::enumToString()
     }
 }
 
+bool gpp::GameObject::checkCollision(const GameObject& other) const
+{
+    // Calculate the distance between the centers of the two objects in each axis
+    float dx = other.position.x - position.x;
+    float dy = other.position.y - position.y;
+    float dz = other.position.z - position.z;
+
+    // Calculate the squared distance
+    float distanceSquared = dx * dx + dy * dy + dz * dz;
+
+    // Define the collision distance threshold (squared)
+    float collisionDistanceSquared = 1.0f; // Adjust this value as needed
+
+    // Check if the squared distance is less than the collision threshold
+    return distanceSquared < collisionDistanceSquared;
+}
+
+
+
 TYPE GameObject::getType() const
 {
     return type;
